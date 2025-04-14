@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="server.app_end.repository.AuthorRepository">
+
+    <insert id="add" parameterType="server.app_end.pojo.Author" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO authors (date, name, province, city, address,zip)
+        VALUES (#{date}, #{name}, #{province}, #{city}, #{address},#{zip})
+    </insert>
+
+    <update id="edit" parameterType="server.app_end.pojo.Author">
+        UPDATE authors
+        SET date = #{date}, name = #{name}, province = #{province}, city = #{city}, address = #{address}, zip = #{zip}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="server.app_end.pojo.Author">
+        DELETE FROM authors
+        WHERE id = #{id}
+    </delete>
+
+    <select id="list" resultType="server.app_end.pojo.Author" parameterType="map">
+        <bind name="offset" value="(page - 1) * pageSize"/>
+        SELECT *
+        FROM authors
+        <where>
+            <if test="keyword != null and keyword != ''">
+                name LIKE CONCAT('%', #{keyword}, '%')
+            </if>
+        </where>
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+    <select id="count" resultType="int" parameterType="map">
+    SELECT count(*)
+    FROM authors
+    <where>
+        <if test="keyword != null and keyword != ''">
+            name LIKE CONCAT('%', #{keyword}, '%')
+        </if>
+    </where>
+</select>
+</mapper>

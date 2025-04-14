@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="server.app_end.repository.UserRepository">
+
+    <!-- 新增用户 -->
+    <insert id="add" parameterType="server.app_end.pojo.User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO users (name, password, email, birthday, avatar)
+        VALUES (#{name}, #{password}, #{email}, #{birthday}, #{avatar})
+    </insert>
+
+    <!-- 更新用户信息 -->
+    <update id="update" parameterType="server.app_end.pojo.User">
+        UPDATE users
+        SET name = #{name}, password = #{password}, email = #{email}, birthday = #{birthday}, avatar = #{avatar}
+        WHERE id = #{id}
+    </update>
+
+    <!-- 通过用户名查找 -->
+    <select id="getByName" parameterType="string" resultType="server.app_end.pojo.User">
+        SELECT id, name, password, email, birthday, avatar
+        FROM users
+        WHERE name = #{name}
+    </select>
+
+    <!-- 查询邮箱是否存在 -->
+    <select id="existsByEmail" resultType="boolean">
+        SELECT COUNT(*) > 0
+        FROM users
+        WHERE email = #{email}
+    </select>
+
+    <!-- 获取用户的文章统计信息（分页）-->
+    <select id="getUserArticleStats" resultType="server.app_end.pojo.dto.AuthorDto">
+        SELECT
+            u.name,
+            IFNULL(COUNT(a.id), 0) AS articleCount
+        FROM
+            users u
+                LEFT JOIN article a ON u.name = a.name
+        GROUP BY
+            u.id, u.name
+            LIMIT #{offset}, #{pageSize}
+    </select>
+
+
+    <select id="countUsers" resultType="int">
+        SELECT COUNT(*) FROM users
+    </select>
+</mapper>
