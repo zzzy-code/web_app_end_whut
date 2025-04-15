@@ -51,13 +51,17 @@ web_app_end_whut/
 ### 📌 克隆项目  
 git clone https://github.com/zzzy-code/web_app_end_whut.git
 
-### 📌 配置数据库
-在 src/main/resources/application.yml 中配置你的数据库信息：
+### 📌 配置数据库  
+
+在 `src/main/resources/application.yml` 中配置你的数据库信息：
+
+```yaml
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/your_database_name
     username: your_username
     password: your_password
+
     
 ### 📌 导入数据库表
 可在 sql/ 目录下找到建表 SQL 文件，导入至 MySQL：
