@@ -16,7 +16,21 @@ whut_ Web 应用开发课程实验项目 —— 后端系统
 
 ## 📂 项目结构  
 
-web_app_end_whut/ ├── src/main/java/com/whut/webappend │ ├── controller // 控制器层，处理前端请求 │ ├── entity // 实体类，映射数据库表 │ ├── service // 业务逻辑层 │ ├── mapper // 数据库操作层（MyBatis 或 JPA） │ ├── config // 配置类（跨域、Swagger、拦截器） │ └── WebAppEndApplication.java // SpringBoot 启动类 │ ├── src/main/resources │ ├── application.yml // 项目配置文件 │ └── sql/ // 数据库建表 SQL 脚本（可选） │ └── pom.xml // Maven 项目依赖管理
+web_app_end_whut/
+├── src/main/java/com/whut/webappend
+│   ├── controller    // 控制器层，处理前端请求
+│   ├── pojo        // 实体类，映射数据库表
+│   ├── service       // 业务逻辑层
+|   ├── exception   //异常处理层
+│   ├── config        // 配置类（跨域、Swagger、拦截器）
+│   └── WebAppEndApplication.java // SpringBoot 启动类
+│
+├── src/main/resources
+│   ├── application.yml // 项目配置文件
+│   └── mybatis/            // 数据库建表 SQL 脚本（可选）
+│
+└── pom.xml             // Maven 项目依赖管理
+
 
 ## 📦 环境依赖  
 
@@ -26,7 +40,7 @@ web_app_end_whut/ ├── src/main/java/com/whut/webappend │ ├── contr
 | Maven            | 3.8+        |
 | Spring Boot      | 3.x         |
 | MySQL            | 8.x         |
-| Spring Data JPA / MyBatis | 最新稳定版 |
+| MyBatis          | 最新稳定版 |
 | Postman          | 最新版      |
 | Vue + ElementUI  | 3.x + 2.x/3.x|
 | Git              | 最新版      |
