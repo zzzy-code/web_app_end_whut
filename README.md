@@ -49,7 +49,7 @@ web_app_end_whut/
 ## 🛠️ 启动与部署  
 
 ### 📌 克隆项目  
-git clone https://github.com/你的GitHub用户名/web_app_end_whut.git
+git clone https://github.com/zzzy-code/web_app_end_whut.git
 
 ### 📌 配置数据库
 在 src/main/resources/application.yml 中配置你的数据库信息：
