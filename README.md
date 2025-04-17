@@ -15,7 +15,7 @@ whut_ Web 应用开发课程实验项目 —— 后端系统
 - 前端 Vue + ElementUI 页面联动
 - 完整的跨域配置、接口测试支持
 
-前端项目仓库：[web_app_front_whut](https://github.com/zzzy-code/web_app_front_whut)
+  前端项目仓库：[web_app_front_whut](https://github.com/zzzy-code/web_app_front_whut)
 ---
 
 ## 📂 项目结构  
